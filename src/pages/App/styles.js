@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from '../../styles/colors'
 export const AppContainer = styled.div`
 	min-height: 100vh;
 	font-size: 1.5rem;
@@ -8,7 +9,7 @@ export const AppContainer = styled.div`
 	justify-content: center;
 	display: flex;
 	strong{
-		color: #787AF6;
+		color: ${colors.secondary};
 	}
 	input{
 		width: 30%;
@@ -19,3 +20,4 @@ export const AppContainer = styled.div`
 		margin: 1rem 0;
 	}
 `;
+

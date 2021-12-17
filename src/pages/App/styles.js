@@ -3,8 +3,7 @@ import colors from '../../styles/colors'
 export const AppContainer = styled.div`
 	min-height: 100vh;
 	font-size: 1.5rem;
-
-	padding: 0 12rem;
+	padding: 0 2rem;
 	flex-direction: column;
 	justify-content: center;
 	display: flex;
@@ -12,7 +11,7 @@ export const AppContainer = styled.div`
 		color: ${colors.secondary};
 	}
 	input{
-		width: 30%;
+		min-width: 30%;
 		height: 3rem;
 		border: 1px solid gray;
 		border-radius: 6px;

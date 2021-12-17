@@ -18,5 +18,9 @@ export const AppContainer = styled.div`
 		padding: 0 0.8rem;
 		margin: 1rem 0;
 	}
+	input:focus{
+		outline: none;
+		border: 2px solid ${colors.secondary}
+	}
 `;
 

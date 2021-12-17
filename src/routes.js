@@ -1,15 +1,28 @@
 import React from "react";
-import { useLocation, Route, Routes, Redirect} from "react-router-dom";
+import {Route, Routes, Navigate} from "react-router-dom";
 import App from './pages/App';
-import Difficulty from './pages/Difficulty';
-import Quiz from './pages/Quiz';
+import Quiz from './pages/Quiz'
+import Difficulty from './pages/Difficulty'
+import { storeQuiz } from "./services/auth";
+
+
+
 export default function RoutesConfig() {
-	const location = useLocation();
+  function PrivateRoute({ children }) {
+    const haveQuestions = storeQuiz();
+    return haveQuestions ? children : <Navigate to="/" />;
+  }
+  console.log(storeQuiz())
 	return (
-		<Routes location={location}>
-				<Route exact path="/" element={<App/>} />
-				<Route exact path="/difficulty" element={<Difficulty/>} />
-				<Route exact path="/quiz" element={<Quiz/>} />
-		</Routes>
+      <Routes>
+          <Route path="/" element={<App/>} />
+          <Route path="/difficulty" element={<Difficulty/>} />
+          <Route path="/quiz" element={
+              <PrivateRoute>
+                <Quiz />
+              </PrivateRoute>
+            }
+          />
+      </Routes>
 	);
   }

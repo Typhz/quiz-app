@@ -22,5 +22,14 @@ export const AppContainer = styled.div`
 		outline: none;
 		border: 2px solid ${colors.secondary}
 	}
+	button{
+		background: ${colors.secondary};
+		color: white;
+		min-width: 3rem;
+		height: 3rem;
+		margin-left: 1%;
+		border: none;
+		border-radius: 6px;
+	}
 `;
 

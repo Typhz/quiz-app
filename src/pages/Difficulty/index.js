@@ -1,35 +1,26 @@
-import React from "react";
-import { AppContainer, Difficulty } from "./styles";
+import React, { useState } from "react";
+import { AppContainer, Difficulty, Loading } from "./styles";
+import getQuestion from "../../services/getQuestions";
 import { useNavigate } from "react-router-dom";
-import api from "../../services/api";
 
-export default function App() {
+function DifficultySelect() {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  async function DifficultySelect(difficulty) {
-    api
-      .get("/questions", {
-        params: {
-          apiKey: "x5yYMkHgQ0xhz7Q7RD1CfTQESV5gXkBwlfcuNFed",
-          difficulty: difficulty,
-          limit: 10,
-        },
-      })
-      .then(function (response) {
-        // handle success
-        localStorage.setItem("quiz", JSON.stringify(response));
-        navigate("/quiz");
-        console.log(response);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
+  function DifficultySelect(difficulty) {
+    (async (difficulty) => {
+      setIsLoading(true);
+      await getQuestion(difficulty);
+      navigate("/quiz")
+    })();
   }
   return (
     <AppContainer>
+      {isLoading ? (
+        <Loading>
+          <div className="loader"></div>
+          <h3>Carregando</h3>
+        </Loading>
+      ) : null}
       <h1>
         Selecione um nivel <br />
         de dificuldade
@@ -48,3 +39,5 @@ export default function App() {
     </AppContainer>
   );
 }
+
+export default DifficultySelect;

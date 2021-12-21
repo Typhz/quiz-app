@@ -23,3 +23,31 @@ export const Difficulty = styled.button`
     padding: 1rem 2rem;
     margin: 1rem 0.4rem;
 `
+
+export const Loading = styled.div`
+  background-color: white;
+  width: 70%;
+  height: 60%;
+  border-radius: 6px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  .loader {
+    width: 60px;
+    height: 60px;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid ${colors.secondary};
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+  }
+  h3{
+    margin: 1rem 0;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;
